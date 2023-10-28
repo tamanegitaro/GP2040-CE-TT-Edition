@@ -23,7 +23,7 @@ This firmware is customized by tamanegi_taro. Added compatibility with following
 This project does not include USB descriptors for controllers of mini series so you'll need to supply USB descriptor by yourselves.
 Don't worry. I will provide steps to achieve USB descriptors from your controller pads below.
 
-## What need to be prepared in this project
+## What need to prepare in this project
 In my project, following descriptors need to be modified by you for mini series compatibility:
 
 GP2040-CE\headers\gamepad\descriptors\AstroDescriptors.h
