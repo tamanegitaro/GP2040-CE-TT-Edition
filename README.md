@@ -25,11 +25,11 @@ Don't worry. I will provide steps to achieve USB descriptors from your controlle
 
 In my project, following descriptors need to be modified by you for mini series compatibility:
 GP2040-CE\headers\gamepad\descriptors\AstroDescriptors.h
-*astro_string_manufacturer[]
-*astro_string_product[]
-*astro_device_descriptor[]
-*astro_configuration_descriptor[]
-*astro_report_descriptor[]
+* astro_string_manufacturer[]
+* astro_string_product[]
+* astro_device_descriptor[]
+* astro_configuration_descriptor[]
+* astro_report_descriptor[]
 
 GP2040-CE\headers\gamepad\descriptors\EgretDescriptors.h
 egret_string_manufacturer[]
