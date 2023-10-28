@@ -55,7 +55,7 @@ GP2040-CE\headers\gamepad\descriptors\PCEngineDescriptors.h
 * pcengine_report_descriptor[]
 
 ## Hardware preparation
-You need following gamepads to find missing arrays, respectively.
+You need following gamepads for finding USB descriptors information, respectively.
 
 * Megadrive mini 6 button pad(For Astrocity, Mega drive and Genesis mini support)
 * Egret II mini pad(For Egret II mini support)
@@ -69,8 +69,8 @@ You need following gamepads to find missing arrays, respectively.
 
 You also need USB-C extension cable + logic analyzer(USB protocol) for Neogeo mini support.
 
-## Dumping USB Descriptors(Mega Drive, Egret II, PC Engine mini pads)
-Here is how you get descriptors for each controllers(For Astrocity/Mega Drive, EgretII and PC Engine. Neogeo is different.).
+## Dumping USB Descriptors(Mega Drive(Astro), Egret II, PC Engine mini pads)
+Here is how you get descriptors for Mega Drive(Astrocity), EgretII and PC Engine mini series.
 
 * (1) Install Wireshark with USB Cap
 * (2) Run Wireshark with USB Cap and start recording USB packets
