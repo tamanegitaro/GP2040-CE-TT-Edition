@@ -20,6 +20,22 @@ static uint16_t getConfigurationDescriptor(const uint8_t *buffer, InputMode mode
 			buffer = ps4_configuration_descriptor;
 			return sizeof(ps4_configuration_descriptor);
 
+		case INPUT_MODE_ASTRO:
+			buffer = astro_configuration_descriptor;
+			return sizeof(astro_configuration_descriptor);
+
+		case INPUT_MODE_EGRET:
+			buffer = egret_configuration_descriptor;
+			return sizeof(egret_configuration_descriptor);
+
+		case INPUT_MODE_NEOGEO:
+			buffer = neogeo_configuration_descriptor;
+			return sizeof(neogeo_configuration_descriptor);
+
+		case INPUT_MODE_PCENGINE:
+			buffer = pcengine_configuration_descriptor;
+			return sizeof(pcengine_configuration_descriptor);
+
 		default:
 			buffer = hid_configuration_descriptor;
 			return sizeof(hid_configuration_descriptor);
@@ -46,6 +62,18 @@ static uint16_t getDeviceDescriptor(const uint8_t *buffer, InputMode mode)
 			buffer = ps4_device_descriptor;
 			return sizeof(ps4_device_descriptor);
 
+		case INPUT_MODE_ASTRO:
+			buffer = astro_device_descriptor;
+			return sizeof(astro_device_descriptor);
+
+		case INPUT_MODE_EGRET:
+			buffer = egret_device_descriptor;
+			return sizeof(egret_device_descriptor);
+
+		case INPUT_MODE_NEOGEO:
+			buffer = neogeo_device_descriptor;
+			return sizeof(neogeo_device_descriptor);
+
 		default:
 			buffer = hid_device_descriptor;
 			return sizeof(hid_device_descriptor);
@@ -64,6 +92,18 @@ static uint16_t getHIDDescriptor(const uint8_t *buffer, InputMode mode)
 			buffer = keyboard_hid_descriptor;
 			return sizeof(keyboard_hid_descriptor);
 
+		case INPUT_MODE_ASTRO:
+			buffer = astro_hid_descriptor;
+			return sizeof(astro_hid_descriptor);
+
+		case INPUT_MODE_EGRET:
+			buffer = egret_hid_descriptor;
+			return sizeof(egret_hid_descriptor);
+
+		case INPUT_MODE_NEOGEO:
+			buffer = neogeo_hid_descriptor;
+			return sizeof(neogeo_hid_descriptor);
+
 		default:
 			buffer = hid_hid_descriptor;
 			return sizeof(hid_hid_descriptor);
@@ -81,6 +121,18 @@ static uint16_t getHIDReport(const uint8_t *buffer, InputMode mode)
 		case INPUT_MODE_KEYBOARD:
 			buffer = keyboard_report_descriptor;
 			return sizeof(keyboard_report_descriptor);
+
+		case INPUT_MODE_ASTRO:
+			buffer = astro_report_descriptor;
+			return sizeof(astro_report_descriptor);
+
+		case INPUT_MODE_EGRET:
+			buffer = egret_report_descriptor;
+			return sizeof(egret_report_descriptor);
+
+		case INPUT_MODE_NEOGEO:
+			buffer = neogeo_report_descriptor;
+			return sizeof(neogeo_report_descriptor);
 
 		default:
 			buffer = hid_report_descriptor;
@@ -118,6 +170,20 @@ static uint16_t getStringDescriptor(const uint16_t *buffer, InputMode mode, uint
 			size = sizeof(ps4_string_descriptors[index]);
 			break;
 
+		case INPUT_MODE_ASTRO:
+			value = (const char *)astro_string_descriptors[index];
+			size = sizeof(astro_string_descriptors[index]);
+			break;
+
+		case INPUT_MODE_EGRET:
+			value = (const char *)egret_string_descriptors[index];
+			size = sizeof(egret_string_descriptors[index]);
+			break;
+
+		case INPUT_MODE_NEOGEO:
+			value = (const char *)neogeo_string_descriptors[index];
+			size = sizeof(neogeo_string_descriptors[index]);
+			break;
 		default:
 			value = (const char *)hid_string_descriptors[index];
 			size = sizeof(hid_string_descriptors[index]);

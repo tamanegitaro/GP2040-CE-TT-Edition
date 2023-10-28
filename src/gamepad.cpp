@@ -85,6 +85,59 @@ static XInputReport xinputReport
 	._reserved = { },
 };
 
+static AstroReport astroReport
+{
+	.const0 = 1,
+	.const1 = ASTRO_JOYSTICK_MID,
+	.const2 = ASTRO_JOYSTICK_MID,
+	.lx = ASTRO_JOYSTICK_MID,
+	.ly = ASTRO_JOYSTICK_MID,
+	.buttons= 0xf,
+	.const3 = 0,	
+};
+
+static EgretReport egretReport
+{
+	.buttons = 0,
+	.lx = EGRET_JOYSTICK_MID,
+	.ly = EGRET_JOYSTICK_MID,
+};
+
+static NeogeoReport neogeoReport
+{
+	.buttons = 0,
+	.hat = 0xf,
+	.const0 = 0x80,
+	.const1 = 0x80,
+	.const2 = 0x80,
+	.const3 = 0x80,
+	.const4 = 0,	
+	.const5 = 0,	
+	.const6 = 0,	
+	.const7 = 0,	
+	.const8 = 0,	
+	.const9 = 0,	
+	.const10 = 0,	
+	.const11 = 0,	
+	.const12 = 0,	
+	.const13 = 0,	
+	.const14 = 0,	
+	.const15 = 0,	
+	.const16 = 0,	
+	.const17 = 0,	
+};
+
+static PCEngineReport pcengineReport
+{
+	.buttons = 0,
+	.hat = 0xf,
+	.const0 = 0x80,
+	.const1 = 0x80,
+	.const2 = 0x80,
+	.const3 = 0x80,
+	.const4 = 0,	
+};
+
 static TouchpadData touchpadData;
 static uint8_t last_report_counter = 0;
 
@@ -435,6 +488,18 @@ void * Gamepad::getReport()
 		case INPUT_MODE_KEYBOARD:
 			return getKeyboardReport();
 
+		case INPUT_MODE_ASTRO:
+			return getAstroReport();
+
+		case INPUT_MODE_EGRET:
+			return getEgretReport();
+
+		case INPUT_MODE_NEOGEO:
+			return getNeogeoReport();
+
+		case INPUT_MODE_PCENGINE:
+			return getPCEngineReport();
+
 		default:
 			return getHIDReport();
 	}
@@ -456,6 +521,18 @@ uint16_t Gamepad::getReportSize()
 
 		case INPUT_MODE_KEYBOARD:
 			return sizeof(KeyboardReport);
+
+		case INPUT_MODE_ASTRO:
+			return sizeof(AstroReport);
+
+		case INPUT_MODE_EGRET:
+			return sizeof(EgretReport);
+
+		case INPUT_MODE_NEOGEO:
+			return sizeof(NeogeoReport);
+
+		case INPUT_MODE_PCENGINE:
+			return sizeof(PCEngineReport);
 
 		default:
 			return sizeof(HIDReport);
@@ -712,4 +789,119 @@ KeyboardReport *Gamepad::getKeyboardReport()
 	if(pressedA1()) 	{ pressKey(keyboardMapping.keyButtonA1); }
 	if(pressedA2()) 	{ pressKey(keyboardMapping.keyButtonA2); }
 	return &keyboardReport;
+}
+
+AstroReport *Gamepad::getAstroReport()
+{
+	switch (state.dpad & GAMEPAD_MASK_DPAD)
+	{
+		case GAMEPAD_MASK_UP:                        astroReport.lx = ASTRO_JOYSTICK_MID; astroReport.ly = ASTRO_JOYSTICK_MIN; break;
+		case GAMEPAD_MASK_UP | GAMEPAD_MASK_RIGHT:   astroReport.lx = ASTRO_JOYSTICK_MAX; astroReport.ly = ASTRO_JOYSTICK_MIN; break;
+		case GAMEPAD_MASK_RIGHT:                     astroReport.lx = ASTRO_JOYSTICK_MAX; astroReport.ly = ASTRO_JOYSTICK_MID; break;
+		case GAMEPAD_MASK_DOWN | GAMEPAD_MASK_RIGHT: astroReport.lx = ASTRO_JOYSTICK_MAX; astroReport.ly = ASTRO_JOYSTICK_MAX; break;
+		case GAMEPAD_MASK_DOWN:                      astroReport.lx = ASTRO_JOYSTICK_MID; astroReport.ly = ASTRO_JOYSTICK_MAX; break;
+		case GAMEPAD_MASK_DOWN | GAMEPAD_MASK_LEFT:  astroReport.lx = ASTRO_JOYSTICK_MIN; astroReport.ly = ASTRO_JOYSTICK_MAX; break;
+		case GAMEPAD_MASK_LEFT:                      astroReport.lx = ASTRO_JOYSTICK_MIN; astroReport.ly = ASTRO_JOYSTICK_MID; break;
+		case GAMEPAD_MASK_UP | GAMEPAD_MASK_LEFT:    astroReport.lx = ASTRO_JOYSTICK_MIN; astroReport.ly = ASTRO_JOYSTICK_MIN; break;
+		default:                                     astroReport.lx = ASTRO_JOYSTICK_MID; astroReport.ly = ASTRO_JOYSTICK_MID; break;
+	}
+
+
+	astroReport.buttons = 0xf
+		| (pressedB1() ? ASTRO_MASK_B       : 0)
+		| (pressedB2() ? ASTRO_MASK_A       : 0)
+		| (pressedB3() ? ASTRO_MASK_Y       : 0)
+		| (pressedB4() ? ASTRO_MASK_X       : 0)
+		| (pressedR1() ? ASTRO_MASK_R       : 0)
+		| (pressedR2() ? ASTRO_MASK_ZR      : 0)
+		| (pressedS1() ? ASTRO_MASK_MINUS   : 0)
+		| (pressedS2() ? ASTRO_MASK_PLUS    : 0)
+	;
+
+	return &astroReport;
+}
+
+EgretReport *Gamepad::getEgretReport()
+{
+	switch (state.dpad & GAMEPAD_MASK_DPAD)
+	{
+		case GAMEPAD_MASK_UP:                        egretReport.lx = EGRET_JOYSTICK_MID; egretReport.ly = EGRET_JOYSTICK_MIN; break;
+		case GAMEPAD_MASK_UP | GAMEPAD_MASK_RIGHT:   egretReport.lx = EGRET_JOYSTICK_MAX; egretReport.ly = EGRET_JOYSTICK_MIN; break;
+		case GAMEPAD_MASK_RIGHT:                     egretReport.lx = EGRET_JOYSTICK_MAX; egretReport.ly = EGRET_JOYSTICK_MID; break;
+		case GAMEPAD_MASK_DOWN | GAMEPAD_MASK_RIGHT: egretReport.lx = EGRET_JOYSTICK_MAX; egretReport.ly = EGRET_JOYSTICK_MAX; break;
+		case GAMEPAD_MASK_DOWN:                      egretReport.lx = EGRET_JOYSTICK_MID; egretReport.ly = EGRET_JOYSTICK_MAX; break;
+		case GAMEPAD_MASK_DOWN | GAMEPAD_MASK_LEFT:  egretReport.lx = EGRET_JOYSTICK_MIN; egretReport.ly = EGRET_JOYSTICK_MAX; break;
+		case GAMEPAD_MASK_LEFT:                      egretReport.lx = EGRET_JOYSTICK_MIN; egretReport.ly = EGRET_JOYSTICK_MID; break;
+		case GAMEPAD_MASK_UP | GAMEPAD_MASK_LEFT:    egretReport.lx = EGRET_JOYSTICK_MIN; egretReport.ly = EGRET_JOYSTICK_MIN; break;
+		default:                                     egretReport.lx = EGRET_JOYSTICK_MID; egretReport.ly = EGRET_JOYSTICK_MID; break;
+	}
+
+
+	egretReport.buttons = 0
+		| (pressedB1() ? EGRET_MASK_B       : 0)
+		| (pressedB2() ? EGRET_MASK_A       : 0)
+		| (pressedB3() ? EGRET_MASK_Y       : 0)
+		| (pressedB4() ? EGRET_MASK_X       : 0)
+		| (pressedR1() ? EGRET_MASK_R       : 0)
+		| (pressedR2() ? EGRET_MASK_ZR      : 0)
+		| (pressedS1() ? EGRET_MASK_MINUS   : 0)
+		| (pressedS2() ? EGRET_MASK_PLUS    : 0)
+		| (pressedA1() ? EGRET_MASK_HOME    : 0)
+	;
+
+	return &egretReport;
+}
+
+NeogeoReport *Gamepad::getNeogeoReport()
+{
+
+	switch (state.dpad & GAMEPAD_MASK_DPAD)
+	{
+		case GAMEPAD_MASK_UP:                        neogeoReport.hat = NEOGEO_HAT_UP;        break;
+		case GAMEPAD_MASK_UP | GAMEPAD_MASK_RIGHT:   neogeoReport.hat = NEOGEO_HAT_UPRIGHT;   break;
+		case GAMEPAD_MASK_RIGHT:                     neogeoReport.hat = NEOGEO_HAT_RIGHT;     break;
+		case GAMEPAD_MASK_DOWN | GAMEPAD_MASK_RIGHT: neogeoReport.hat = NEOGEO_HAT_DOWNRIGHT; break;
+		case GAMEPAD_MASK_DOWN:                      neogeoReport.hat = NEOGEO_HAT_DOWN;      break;
+		case GAMEPAD_MASK_DOWN | GAMEPAD_MASK_LEFT:  neogeoReport.hat = NEOGEO_HAT_DOWNLEFT;  break;
+		case GAMEPAD_MASK_LEFT:                      neogeoReport.hat = NEOGEO_HAT_LEFT;      break;
+		case GAMEPAD_MASK_UP | GAMEPAD_MASK_LEFT:    neogeoReport.hat = NEOGEO_HAT_UPLEFT;    break;
+		default:                                     neogeoReport.hat = NEOGEO_HAT_NOTHING;   break;
+	}
+
+	neogeoReport.buttons = 0x0
+		| (pressedB3() ? NEOGEO_MASK_Y       : 0)
+		| (pressedB4() ? NEOGEO_MASK_X       : 0)
+		| (pressedR1() ? NEOGEO_MASK_R       : 0)
+		| (pressedL1() ? NEOGEO_MASK_L       : 0)
+		| (pressedS1() ? NEOGEO_MASK_MINUS   : 0)
+		| (pressedS2() ? NEOGEO_MASK_PLUS    : 0)
+	;
+
+	return &neogeoReport;
+}
+
+PCEngineReport *Gamepad::getPCEngineReport()
+{
+
+	switch (state.dpad & GAMEPAD_MASK_DPAD)
+	{
+		case GAMEPAD_MASK_UP:                        pcengineReport.hat = PCENGINE_HAT_UP;        break;
+		case GAMEPAD_MASK_UP | GAMEPAD_MASK_RIGHT:   pcengineReport.hat = PCENGINE_HAT_UPRIGHT;   break;
+		case GAMEPAD_MASK_RIGHT:                     pcengineReport.hat = PCENGINE_HAT_RIGHT;     break;
+		case GAMEPAD_MASK_DOWN | GAMEPAD_MASK_RIGHT: pcengineReport.hat = PCENGINE_HAT_DOWNRIGHT; break;
+		case GAMEPAD_MASK_DOWN:                      pcengineReport.hat = PCENGINE_HAT_DOWN;      break;
+		case GAMEPAD_MASK_DOWN | GAMEPAD_MASK_LEFT:  pcengineReport.hat = PCENGINE_HAT_DOWNLEFT;  break;
+		case GAMEPAD_MASK_LEFT:                      pcengineReport.hat = PCENGINE_HAT_LEFT;      break;
+		case GAMEPAD_MASK_UP | GAMEPAD_MASK_LEFT:    pcengineReport.hat = PCENGINE_HAT_UPLEFT;    break;
+		default:                                     pcengineReport.hat = PCENGINE_HAT_NOTHING;   break;
+	}
+
+	pcengineReport.buttons = 0x0
+		| (pressedB3() ? PCENGINE_MASK_Y       : 0)
+		| (pressedB4() ? PCENGINE_MASK_X       : 0)
+		| (pressedS1() ? PCENGINE_MASK_PLUS   : 0)
+		| (pressedS2() ? PCENGINE_MASK_MINUS    : 0)
+	;
+
+	return &pcengineReport;
 }

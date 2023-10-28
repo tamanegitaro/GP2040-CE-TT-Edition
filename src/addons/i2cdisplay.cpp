@@ -1030,6 +1030,10 @@ void I2CDisplayAddon::drawStatusBar(Gamepad * gamepad)
 			}
 			break;
 		case INPUT_MODE_KEYBOARD: statusBar += "HID-KB"; break;
+		case INPUT_MODE_ASTRO: statusBar += "ASTRO "; break;
+		case INPUT_MODE_EGRET: statusBar += "EGRET "; break;
+		case INPUT_MODE_NEOGEO: statusBar += "NEOGEO"; break;
+		case INPUT_MODE_PCENGINE: statusBar += "PCE   "; break;
 		case INPUT_MODE_CONFIG: statusBar += "CONFIG"; break;
 	}
 

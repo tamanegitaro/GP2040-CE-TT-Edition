@@ -17,6 +17,10 @@ const INPUT_MODES = [
 	{ labelKey: 'input-mode-options.ps3', value: 2 },
 	{ labelKey: 'input-mode-options.keyboard', value: 3 },
 	{ labelKey: 'input-mode-options.ps4', value: PS4Mode },
+	{ labelKey: 'input-mode-options.astro', value: 5 },
+	{ labelKey: 'input-mode-options.egret', value: 6 },
+	{ labelKey: 'input-mode-options.neogeo', value: 7 },
+	{ labelKey: 'input-mode-options.pcengine', value: 8 },
 ];
 
 const DPAD_MODES = [

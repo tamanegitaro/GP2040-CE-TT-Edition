@@ -35,6 +35,10 @@ namespace ConfigLegacy
         INPUT_MODE_HID,
         INPUT_MODE_KEYBOARD,
         INPUT_MODE_PS4,
+        INPUT_MODE_ASTRO,
+        INPUT_MODE_EGRET,
+        INPUT_MODE_NEOGEO,
+        INPUT_MODE_PCENGINE,
         INPUT_MODE_CONFIG = 255,
     };
 
@@ -480,6 +484,10 @@ static bool isValidInputMode(ConfigLegacy::InputMode inputMode)
         case INPUT_MODE_HID:
         case INPUT_MODE_KEYBOARD:
         case INPUT_MODE_PS4:
+        case INPUT_MODE_ASTRO:
+        case INPUT_MODE_EGRET:
+        case INPUT_MODE_NEOGEO:
+        case INPUT_MODE_PCENGINE:
             return true;
     }
     return false;

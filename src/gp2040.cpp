@@ -105,6 +105,10 @@ void GP2040::setup() {
 		case BootAction::SET_INPUT_MODE_XINPUT:
 		case BootAction::SET_INPUT_MODE_PS4:
 		case BootAction::SET_INPUT_MODE_KEYBOARD:
+		case BootAction::SET_INPUT_MODE_ASTRO:
+		case BootAction::SET_INPUT_MODE_EGRET:
+		case BootAction::SET_INPUT_MODE_NEOGEO:
+		case BootAction::SET_INPUT_MODE_PCENGINE:
 		case BootAction::NONE:
 			{
 				InputMode inputMode = gamepad->getOptions().inputMode;
@@ -118,6 +122,14 @@ void GP2040::setup() {
 					inputMode = INPUT_MODE_PS4;
 				} else if (bootAction == BootAction::SET_INPUT_MODE_KEYBOARD) {
 					inputMode = INPUT_MODE_KEYBOARD;
+				} else if (bootAction == BootAction::SET_INPUT_MODE_ASTRO) {
+					inputMode = INPUT_MODE_ASTRO;
+				} else if (bootAction == BootAction::SET_INPUT_MODE_EGRET) {
+					inputMode = INPUT_MODE_EGRET;
+				} else if (bootAction == BootAction::SET_INPUT_MODE_NEOGEO) {
+					inputMode = INPUT_MODE_NEOGEO;
+				} else if (bootAction == BootAction::SET_INPUT_MODE_PCENGINE) {
+					inputMode = INPUT_MODE_PCENGINE;
 				}
 
 				if (inputMode != gamepad->getOptions().inputMode) {
@@ -221,10 +233,18 @@ GP2040::BootAction GP2040::getBootAction() {
 					return BootAction::SET_INPUT_MODE_HID;
 				} else if (!modeSwitchLocked && gamepad->pressedB4()) { // P2
 					return BootAction::SET_INPUT_MODE_PS4;
+				} else if (!modeSwitchLocked && gamepad->pressedR1()) { // P3
+					return BootAction::SET_INPUT_MODE_ASTRO;
+				} else if (!modeSwitchLocked && gamepad->pressedL1()) { // P4
+					return BootAction::SET_INPUT_MODE_EGRET;
 				} else if (!modeSwitchLocked && gamepad->pressedB1()) { // K1
 					return BootAction::SET_INPUT_MODE_SWITCH;
 				} else if (!modeSwitchLocked && gamepad->pressedB2()) { // K2
 					return BootAction::SET_INPUT_MODE_XINPUT;
+				} else if (!modeSwitchLocked && gamepad->pressedL2()) { // K4
+					return BootAction::SET_INPUT_MODE_NEOGEO;
+				} else if (!modeSwitchLocked && gamepad->pressedR3()) { // R3
+					return BootAction::SET_INPUT_MODE_PCENGINE;
 				} else if (!modeSwitchLocked && gamepad->pressedR2()) { // K3
 					return BootAction::SET_INPUT_MODE_KEYBOARD;
 				} else {

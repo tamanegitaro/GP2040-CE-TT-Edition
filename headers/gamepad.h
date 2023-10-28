@@ -12,6 +12,10 @@
 #include "gamepad/descriptors/XInputDescriptors.h"
 #include "gamepad/descriptors/KeyboardDescriptors.h"
 #include "gamepad/descriptors/PS4Descriptors.h"
+#include "gamepad/descriptors/AstroDescriptors.h"
+#include "gamepad/descriptors/EgretDescriptors.h"
+#include "gamepad/descriptors/NeogeoDescriptors.h"
+#include "gamepad/descriptors/PCEngineDescriptors.h"
 
 #include "pico/stdlib.h"
 
@@ -89,6 +93,10 @@ public:
 	XInputReport *getXInputReport();
 	KeyboardReport *getKeyboardReport();
 	PS4Report *getPS4Report();
+	AstroReport *getAstroReport();
+	EgretReport *getEgretReport();
+	NeogeoReport *getNeogeoReport();
+	PCEngineReport *getPCEngineReport();
 
 	/**
 	 * @brief Check for a button press. Used by `pressed[Button]` helper methods.
@@ -179,6 +187,10 @@ public:
 		 return (options.socdMode == SOCD_MODE_BYPASS &&
 				 (options.inputMode == INPUT_MODE_HID ||
 				  options.inputMode == INPUT_MODE_SWITCH ||
+				  options.inputMode == INPUT_MODE_ASTRO ||
+				  options.inputMode == INPUT_MODE_EGRET ||
+				  options.inputMode == INPUT_MODE_NEOGEO ||
+				  options.inputMode == INPUT_MODE_PCENGINE ||
 				  options.inputMode == INPUT_MODE_PS4)) ?
 				SOCD_MODE_NEUTRAL : options.socdMode;
 	};

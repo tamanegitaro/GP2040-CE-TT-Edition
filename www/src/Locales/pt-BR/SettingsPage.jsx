@@ -8,6 +8,10 @@ export default {
 		ps3: 'PS3/DirectInput',
 		keyboard: 'Teclado',
 		ps4: 'PS4',
+		astro: 'ASTROCITY/MEGA DRIVE/GENESIS mini',
+		egret: 'EGRET II mini',
+		neogeo: 'NEOGEO mini',
+		pcengine: 'PC Engine/Core Grafx/TurboGrafx-16 mini',
 	},
 	'ps4-mode-options': {
 		controller: 'Controle',
