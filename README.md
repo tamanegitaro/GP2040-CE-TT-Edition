@@ -68,7 +68,7 @@ You need following gamepads to find missing arrays, respectively.
 
 You also need USB-C extension cable + logic analyzer(USB protocol) for Neogeo mini support.
 
-## Dumping USB Descriptors
+## Dumping USB Descriptors(Mega Drive, Egret II, PC Engine mini pads)
 Here is how you get descriptors for each controllers(For Astrocity/Mega Drive, EgretII and PC Engine. Neogeo is different.).
 
 * (1) Install Wireshark with USB Cap
