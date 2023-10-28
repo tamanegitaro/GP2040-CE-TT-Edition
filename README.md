@@ -56,10 +56,10 @@ GP2040-CE\headers\gamepad\descriptors\PCEngineDescriptors.h
 ## Preparation
 You need following gamepads to find missing arrays, respectively.
 
-Megadrive mini 6 button pad(For Astrocity, Mega drive and Genesis mini support)
-Egret II mini pad(For Egret II mini support)
-Neogeo mini pad(For Neogeo mini support)
-PC Engine mini Turbopad(For PC Engine, CoreGrafx and TG-16 mini support)
+* Megadrive mini 6 button pad(For Astrocity, Mega drive and Genesis mini support)
+* Egret II mini pad(For Egret II mini support)
+* Neogeo mini pad(For Neogeo mini support)
+* PC Engine mini Turbopad(For PC Engine, CoreGrafx and TG-16 mini support)
 
 ![image](https://github.com/tamanegitaro/GP2040-CE-TT-Edition/assets/28869075/b6bda750-4f73-42eb-aacf-001699a5020b)
 ![image](https://github.com/tamanegitaro/GP2040-CE-TT-Edition/assets/28869075/b0ef4bf9-a1ed-44a6-8580-0fa5d74d1916)
