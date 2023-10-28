@@ -100,7 +100,7 @@ For Neogeo pad, it is little difficult because you will need logic analyzer. Con
 Neogeo mini will apply reset on Neogeo pad and USB descriptor will change.
 ![image](https://github.com/tamanegitaro/GP2040-CE-TT-Edition/assets/28869075/2414566f-1dc3-400e-87a8-7f5b86af1b84)
 
-You need to dump this second USB descriptor. Find descriptor which starts from 0x12 0x01. This is descriptor for neogeo_device_descriptor[].
+You need to dump this second USB descriptor. Find descriptor which starts from 0x12 0x01. Use it as neogeo_device_descriptor[].
 
 Find descriptor which starts from 0x09 0x02. This is configuration descryptor. There are two configuration descriptors. Find longer one and use it as neogeo_configuration_descriptor[].
 
