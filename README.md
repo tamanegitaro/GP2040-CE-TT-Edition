@@ -23,9 +23,63 @@ This firmware is customized by tamanegi_taro. Added compatibility with following
 * Core Grafx mini
 * TurboGrafx-16 mini	
 
-<p align="left">
-  This project does not provide USB descriptor so you'll need to supply USB descriptor by yourselves. Don't worry. I will provide steps to achieve USB descriptors from your controller pads in moment.
-</p>
+This project does not include USB descriptors for controllers of mini series so you'll need to supply USB descriptor by yourselves.
+Don't worry. I will provide steps to achieve USB descriptors from your controller pads in moment.
+
+In my project, following descriptors are empty:
+GP2040-CE\headers\gamepad\descriptors\AstroDescriptors.h
+astro_device_descriptor[]
+astro_configuration_descriptor[]
+astro_report_descriptor[]
+
+GP2040-CE\headers\gamepad\descriptors\EgretDescriptors.h
+egret_device_descriptor[]
+egret _configuration_descriptor[]
+egret _report_descriptor[]
+
+GP2040-CE\headers\gamepad\descriptors\NeogeoDescriptors.h
+neogeo_device_descriptor[]
+neogeo_configuration_descriptor[]
+neogeo_report_descriptor[]
+
+GP2040-CE\headers\gamepad\descriptors\PCEngineDescriptors.h
+pcengine_device_descriptor[]
+pcengine_configuration_descriptor[]
+pcengine_report_descriptor[]
+
+What you need to prepare:
+Egret II mini pad(For Egret II mini support)
+Megadrive mini 6 button pad(For Astrocity, Mega drive and Genesis mini support)
+Neogeo mini pad(For Neogeo mini support)
+PC Engine mini Turbopad(For PC Engine, CoreGrafx and TG-16 mini support)
+USB-C extension cable + logic analyzer(USB protocol) for Neogeo support.
+
+[IMAGE FOR PADS]
+
+Here is how you get descriptors for each controllers.
+
+(1) Install Wireshark with USB Cap
+(2) Run Wireshark with USB Cap and start recording USB packets
+(3) Plug your controller to your PC
+(4) Stop Wireshark recording
+(5) Scroll up until you find descriptors of your controller
+
+Click on GET DESCRIPTOR Response DEVICE and DEVICE DESCRIPTOR. The binary array is highlighted in blue. Use this 18 byte array for xx_device_descriptor[] array.
+![image](https://github.com/tamanegitaro/GP2040-CE-TT-Edition/assets/28869075/379b797f-250e-4777-869c-6c9c129839cd)
+
+There is two GET DESCRIPTOR Response CONFIGURATION. Click on second one. Also click on CONFIGURATION DESCRIPTOR to highlight what you will need for xx_configuration_descriptor[] array.
+![image](https://github.com/tamanegitaro/GP2040-CE-TT-Edition/assets/28869075/31bfedc5-32a2-4178-995d-095279e8061a)
+
+This configuration descriptor include ENDPOINT DESCRIPTOR. Find byte which corresponds to bInterval byte. There are several ENDPOINT and bInterval in this descriptor. If these are not 0x01, change them to 0x01 for fastest response.
+![image](https://github.com/tamanegitaro/GP2040-CE-TT-Edition/assets/28869075/12b90ee0-da40-426a-ad7d-afc9e30ab317)
+
+
+[IMAGE FOR CONFIGURATION DESCRIPTOR2]
+
+
+
+
+
 <p align="center">
   <img src="https://img.shields.io/github/license/OpenStickCommunity/GP2040-CE" />
   <img src="https://img.shields.io/github/actions/workflow/status/OpenStickCommunity/GP2040-CE/cmake.yml" />
