@@ -32,25 +32,25 @@ GP2040-CE\headers\gamepad\descriptors\AstroDescriptors.h
 * astro_report_descriptor[]
 
 GP2040-CE\headers\gamepad\descriptors\EgretDescriptors.h
-egret_string_manufacturer[]
-egret_string_product[]
-egret_device_descriptor[]
-egret _configuration_descriptor[]
-egret _report_descriptor[]
+* egret_string_manufacturer[]
+* egret_string_product[]
+* egret_device_descriptor[]
+* egret _configuration_descriptor[]
+* egret _report_descriptor[]
 
 GP2040-CE\headers\gamepad\descriptors\NeogeoDescriptors.h
-neogeo_string_manufacturer[]
-neogeo_string_product[]
-neogeo_device_descriptor[]
-neogeo_configuration_descriptor[]
-neogeo_report_descriptor[]
+* neogeo_string_manufacturer[]
+* neogeo_string_product[]
+* neogeo_device_descriptor[]
+* neogeo_configuration_descriptor[]
+* neogeo_report_descriptor[]
 
 GP2040-CE\headers\gamepad\descriptors\PCEngineDescriptors.h
-pcengine_string_manufacturer[]
-pcengine_string_product[]
-pcengine_device_descriptor[]
-pcengine_configuration_descriptor[]
-pcengine_report_descriptor[]
+* pcengine_string_manufacturer[]
+* pcengine_string_product[]
+* pcengine_device_descriptor[]
+* pcengine_configuration_descriptor[]
+* pcengine_report_descriptor[]
 
 ## Preparation
 You need following gamepads to find missing arrays, respectively.
