@@ -1,8 +1,4 @@
-<p align="center">
-  <a href="https://gp2040-ce.info">
-    ![gp2040-ce-logo](https://github.com/tamanegitaro/GP2040-CE-TT-Edition/assets/28869075/7716dc5b-80c7-4b54-81ac-c99af01d39fa)
-  </a>
-</p>
+![gp2040-ce-logo](https://github.com/tamanegitaro/GP2040-CE-TT-Edition/assets/28869075/7716dc5b-80c7-4b54-81ac-c99af01d39fa)
 
 
 <p align="center">
