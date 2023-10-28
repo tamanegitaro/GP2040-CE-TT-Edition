@@ -73,19 +73,19 @@ You also need USB-C extension cable + logic analyzer(USB protocol) for Neogeo mi
 ## Dumping USB Descriptors
 Here is how you get descriptors for each controllers(For Astrocity/Mega Drive, EgretII and PC Engine. Neogeo is different.).
 
-(1) Install Wireshark with USB Cap
-(2) Run Wireshark with USB Cap and start recording USB packets
-(3) Plug your controller to your PC
-(4) Stop Wireshark recording
-(5) Scroll up until you find descriptors of your controller
+* (1) Install Wireshark with USB Cap
+* (2) Run Wireshark with USB Cap and start recording USB packets
+* (3) Plug your controller to your PC
+* (4) Stop Wireshark recording
+* (5) Scroll up until you find descriptors of your controller
 
-Click on GET DESCRIPTOR Response DEVICE and DEVICE DESCRIPTOR. The binary array is highlighted in blue. Use this 18 byte array for xx_device_descriptor[] array.
+Click on "GET DESCRIPTOR Response DEVICE" then click on "DEVICE DESCRIPTOR". The binary array is highlighted in blue. Use this 18 byte array for xx_device_descriptor[] array.
 ![image](https://github.com/tamanegitaro/GP2040-CE-TT-Edition/assets/28869075/379b797f-250e-4777-869c-6c9c129839cd)
 
-There is two GET DESCRIPTOR Response CONFIGURATION. Click on second one. Also click on CONFIGURATION DESCRIPTOR to highlight what you will need for xx_configuration_descriptor[] array.
+There is two "GET DESCRIPTOR Response CONFIGURATION". Click on second one. Also click on "CONFIGURATION DESCRIPTOR" to highlight what you will need for xx_configuration_descriptor[] array.
 ![image](https://github.com/tamanegitaro/GP2040-CE-TT-Edition/assets/28869075/31bfedc5-32a2-4178-995d-095279e8061a)
 
-This configuration descriptor include ENDPOINT DESCRIPTOR. Find byte which corresponds to bInterval byte. There are several ENDPOINT and bInterval in this descriptor. If these are not 0x01, change them to 0x01 for fastest response.
+This configuration descriptor include several "ENDPOINT DESCRIPTOR". Click on it to find byte which corresponds to bInterval byte. There are several ENDPOINT and bInterval in this descriptor. If these are not 0x01, change them to 0x01 for fastest response.
 ![image](https://github.com/tamanegitaro/GP2040-CE-TT-Edition/assets/28869075/12b90ee0-da40-426a-ad7d-afc9e30ab317)
 
 Click on "GET DESCRIPTOR Response HID Report" and "HID Report". The binary array is highlighted in blue. Use this array for xx_report_descriptor[] array.
@@ -94,8 +94,19 @@ Click on "GET DESCRIPTOR Response HID Report" and "HID Report". The binary array
 For xx_string_manufacturer[] and xx_string_product[], open game controller configuration in windows settings. You can see gamepad's name.("6B controller" in this example image.). Use this string for both xx_string_manufacturer[] and xx_string_product[].
 ![image](https://github.com/tamanegitaro/GP2040-CE-TT-Edition/assets/28869075/94952e56-8f3a-46d2-b251-69db97ec84af)
 
+## Neogeo
+For Neogeo pad, it is little difficult because you will need logic analyzer. Connect logic analyzer between Neogeo pad and Neogeo mini.
 
-For NEOGEO pad, it is little difficult because you will need logic analyzer.
+Neogeo mini will apply reset on Neogeo pad and USB descriptor will change.
+![image](https://github.com/tamanegitaro/GP2040-CE-TT-Edition/assets/28869075/2414566f-1dc3-400e-87a8-7f5b86af1b84)
+
+You need to dump this second USB descriptor. Find descriptor which starts from 0x12 0x01. This is descriptor for neogeo_device_descriptor[].
+
+Find descriptor which starts from 0x09 0x02. This is configuration descryptor. There are several configuration descriptors. Find longer one and use it as neogeo_configuration_descriptor[].
+
+Next, find string descriptor which start from 0x06 0x03. Search in google for ASCII table and find which character is used for this string descriptor. For example, if value of descriptor is 0x06 0x03 0x42 0x00 0x42 0x00, string will be "BB". Use string you found for both xx_string_manufacturer[] and xx_string_product[]. This is important. Without this string, Neogeo mini will not recognize your fight stick as pad.
+
+Next, find descriptor which start from 0x05 0x01. This descriptor might be divied into multiple transfers if the array was too long. Combine them and used this for neogeo_report_descriptor[].
 
 
 
