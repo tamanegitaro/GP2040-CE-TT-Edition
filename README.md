@@ -10,18 +10,18 @@
 
 <p align="left">
   This firmware is customized by tamanegi_taro. Added compatibility with following mini series:
-	- Astrocity mini
-	- Astrocity V mini
-	- Mega drive mini
-	- Mega drive 2 mini
-	- Genesis mini
-	- Genesis 2 mini
-	- Egret II mini
-  - Neogeo mini
-	- Neogeo international mini
-	- PC Engine mini
-  - Core Grafx mini
-	- TurboGrafx-16 mini	
+	* Astrocity mini
+	* Astrocity V mini
+	* Mega drive mini
+	* Mega drive 2 mini
+	* Genesis mini
+	* Genesis 2 mini
+	* Egret II mini
+  * Neogeo mini
+	* Neogeo international mini
+	* PC Engine mini
+  * Core Grafx mini
+	* TurboGrafx-16 mini	
 </p>
 
 <p align="left">
