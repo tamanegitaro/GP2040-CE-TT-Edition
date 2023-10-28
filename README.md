@@ -21,8 +21,9 @@ This firmware is customized by tamanegi_taro. Added compatibility with following
 * TurboGrafx-16 mini	
 
 This project does not include USB descriptors for controllers of mini series so you'll need to supply USB descriptor by yourselves.
-Don't worry. I will provide steps to achieve USB descriptors from your controller pads in moment.
+Don't worry. I will provide steps to achieve USB descriptors from your controller pads below.
 
+## What need to be prepared in this project
 In my project, following descriptors need to be modified by you for mini series compatibility:
 
 GP2040-CE\headers\gamepad\descriptors\AstroDescriptors.h
@@ -53,7 +54,7 @@ GP2040-CE\headers\gamepad\descriptors\PCEngineDescriptors.h
 * pcengine_configuration_descriptor[]
 * pcengine_report_descriptor[]
 
-## Preparation
+## Hardware preparation
 You need following gamepads to find missing arrays, respectively.
 
 * Megadrive mini 6 button pad(For Astrocity, Mega drive and Genesis mini support)
@@ -96,7 +97,7 @@ Click on "GET DESCRIPTOR Response HID Report" and "HID Report". The binary array
 For xx_string_manufacturer[] and xx_string_product[], open game controller configuration in windows settings. You can see gamepad's name.("6B controller" in this example figure.). Use this string for both xx_string_manufacturer[] and xx_string_product[].
 ![image](https://github.com/tamanegitaro/GP2040-CE-TT-Edition/assets/28869075/94952e56-8f3a-46d2-b251-69db97ec84af)
 
-## Neogeo
+## Dumping USB Descriptors(Neogeo mini pad)
 For Neogeo pad, it is little difficult because you will need logic analyzer. Connect logic analyzer between Neogeo pad and Neogeo mini.
 
 Neogeo mini will apply reset on Neogeo pad and USB descriptor will change.
