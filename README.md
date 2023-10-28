@@ -24,6 +24,7 @@ This project does not include USB descriptors for controllers of mini series so 
 Don't worry. I will provide steps to achieve USB descriptors from your controller pads in moment.
 
 In my project, following descriptors need to be modified by you for mini series compatibility:
+
 GP2040-CE\headers\gamepad\descriptors\AstroDescriptors.h
 * astro_string_manufacturer[]
 * astro_string_product[]
