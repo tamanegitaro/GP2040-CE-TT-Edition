@@ -78,21 +78,18 @@ Here is how you get descriptors for each controllers(For Astrocity/Mega Drive, E
 * (4) Stop Wireshark recording
 * (5) Scroll up until you find descriptors of your controller
 
-Click on "GET DESCRIPTOR Response DEVICE" then click on "DEVICE DESCRIPTOR". The binary array is highlighted in blue. Use this 18 byte array for xx_device_descriptor[] array.
+Click on "GET DESCRIPTOR Response DEVICE" then click on "DEVICE DESCRIPTOR". The binary array is highlighted in blue. Use this 18 byte array for xx_device_descriptor[] array. (Descriptor shown in this figure is GP2040-CE Nintendo Switch descriptor.)
 ![image](https://github.com/tamanegitaro/GP2040-CE-TT-Edition/assets/28869075/379b797f-250e-4777-869c-6c9c129839cd)
-(Descriptor shown in this figure is GP2040-CE Nintendo Switch descriptor.)
 
-There is two "GET DESCRIPTOR Response CONFIGURATION". Click on second one. Also click on "CONFIGURATION DESCRIPTOR" to highlight what you will need for xx_configuration_descriptor[] array.
+
+There is two "GET DESCRIPTOR Response CONFIGURATION". Click on second one. Also click on "CONFIGURATION DESCRIPTOR" to highlight what you will need for xx_configuration_descriptor[] array. (Descriptor shown in this figure is GP2040-CE Nintendo Switch descriptor.)
 ![image](https://github.com/tamanegitaro/GP2040-CE-TT-Edition/assets/28869075/31bfedc5-32a2-4178-995d-095279e8061a)
-(Descriptor shown in this figure is GP2040-CE Nintendo Switch descriptor.)
 
-This configuration descriptor include several "ENDPOINT DESCRIPTOR". Click on it to find byte which corresponds to bInterval byte. There are several ENDPOINT and bInterval in this descriptor. If these are not 0x01, change them to 0x01 for fastest response.
+This configuration descriptor include several "ENDPOINT DESCRIPTOR". Click on it to find byte which corresponds to bInterval byte. There are several ENDPOINT and bInterval in this descriptor. If these are not 0x01, change them to 0x01 for fastest response. (Descriptor shown in this figure is GP2040-CE Nintendo Switch descriptor.)
 ![image](https://github.com/tamanegitaro/GP2040-CE-TT-Edition/assets/28869075/12b90ee0-da40-426a-ad7d-afc9e30ab317)
-(Descriptor shown in this figure is GP2040-CE Nintendo Switch descriptor.)
 
-Click on "GET DESCRIPTOR Response HID Report" and "HID Report". The binary array is highlighted in blue. Use this array for xx_report_descriptor[] array.
+Click on "GET DESCRIPTOR Response HID Report" and "HID Report". The binary array is highlighted in blue. Use this array for xx_report_descriptor[] array. (Descriptor shown in this figure is GP2040-CE Nintendo Switch descriptor.)
 ![image](https://github.com/tamanegitaro/GP2040-CE-TT-Edition/assets/28869075/a0428280-50de-497d-aa32-16ebb92def4b)
-(Descriptor shown in this figure is GP2040-CE Nintendo Switch descriptor.)
 
 For xx_string_manufacturer[] and xx_string_product[], open game controller configuration in windows settings. You can see gamepad's name.("6B controller" in this example figure.). Use this string for both xx_string_manufacturer[] and xx_string_product[].
 ![image](https://github.com/tamanegitaro/GP2040-CE-TT-Edition/assets/28869075/94952e56-8f3a-46d2-b251-69db97ec84af)
