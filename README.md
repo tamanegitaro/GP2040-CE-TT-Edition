@@ -23,6 +23,19 @@ This firmware is customized by tamanegi_taro. Added compatibility with following
 This project does not include USB descriptors for controllers of mini series so you'll need to supply USB descriptor by yourselves.
 Don't worry. I will provide steps to achieve USB descriptors from your controller pads below.
 
+## Button to select input mode
+Hold these button while plugging USB to select input mode
+
+* P1 DirectInput
+* P2 PS4
+* K1 Switch
+* K2 Xinput
+* R1 Astrocity/Mega Drive/Genesis mini
+* L1 Egret II mini
+* R2 Keyboard
+* L2 Neogeo mini
+* R3 PC Engine mini
+
 ## What need to prepare in this project
 In my project, following descriptors need to be modified by you for mini series compatibility:
 
