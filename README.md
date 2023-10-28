@@ -36,7 +36,7 @@ Hold these button while plugging USB to select input mode
 * L2 Neogeo mini
 * R3 PC Engine/Core Grafx/TurboGrafx-16 mini
 
-## What need to prepared in this project
+## What need to be prepared in this project
 In my project, following descriptors need to be modified by you for mini series compatibility:
 
 GP2040-CE\headers\gamepad\descriptors\AstroDescriptors.h
