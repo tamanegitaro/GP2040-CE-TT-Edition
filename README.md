@@ -1,4 +1,4 @@
-![image](https://github.com/tamanegitaro/GP2040-CE-TT-Edition/assets/28869075/ff1ef6bd-a70c-4c3c-9395-8a8e86f01c14)<p align="center">
+<p align="center">
   <a href="https://gp2040-ce.info">
     <img alt="GP2040-CE" src="https://raw.githubusercontent.com/OpenStickCommunity/GP2040-CE/main/docs/assets/images/gp2040-ce-logo.png" />
   </a>
