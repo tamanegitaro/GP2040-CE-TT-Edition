@@ -82,7 +82,7 @@ Click on "GET DESCRIPTOR Response DEVICE" then click on "DEVICE DESCRIPTOR". The
 ![image](https://github.com/tamanegitaro/GP2040-CE-TT-Edition/assets/28869075/379b797f-250e-4777-869c-6c9c129839cd)
 
 
-There is two "GET DESCRIPTOR Response CONFIGURATION". Click on second one. Also click on "CONFIGURATION DESCRIPTOR" to highlight what you will need for xx_configuration_descriptor[] array. (Descriptor shown in this figure is GP2040-CE Nintendo Switch descriptor.)
+There are two "GET DESCRIPTOR Response CONFIGURATION". Click on second one. Also click on "CONFIGURATION DESCRIPTOR" to highlight what you will need for xx_configuration_descriptor[] array. (Descriptor shown in this figure is GP2040-CE Nintendo Switch descriptor.)
 ![image](https://github.com/tamanegitaro/GP2040-CE-TT-Edition/assets/28869075/31bfedc5-32a2-4178-995d-095279e8061a)
 
 This configuration descriptor include several "ENDPOINT DESCRIPTOR". Click on it to find byte which corresponds to bInterval byte. There are several ENDPOINT and bInterval in this descriptor. If these are not 0x01, change them to 0x01 for fastest response. (Descriptor shown in this figure is GP2040-CE Nintendo Switch descriptor.)
