@@ -1,4 +1,4 @@
-<p align="center">
+![image](https://github.com/tamanegitaro/GP2040-CE-TT-Edition/assets/28869075/ff1ef6bd-a70c-4c3c-9395-8a8e86f01c14)<p align="center">
   <a href="https://gp2040-ce.info">
     <img alt="GP2040-CE" src="https://raw.githubusercontent.com/OpenStickCommunity/GP2040-CE/main/docs/assets/images/gp2040-ce-logo.png" />
   </a>
@@ -26,37 +26,52 @@ This firmware is customized by tamanegi_taro. Added compatibility with following
 This project does not include USB descriptors for controllers of mini series so you'll need to supply USB descriptor by yourselves.
 Don't worry. I will provide steps to achieve USB descriptors from your controller pads in moment.
 
-In my project, following descriptors are empty:
+In my project, following descriptors need to be modified by you for mini series compatibility:
 GP2040-CE\headers\gamepad\descriptors\AstroDescriptors.h
+astro_string_manufacturer[]
+astro_string_product[]
 astro_device_descriptor[]
 astro_configuration_descriptor[]
 astro_report_descriptor[]
 
 GP2040-CE\headers\gamepad\descriptors\EgretDescriptors.h
+egret_string_manufacturer[]
+egret_string_product[]
 egret_device_descriptor[]
 egret _configuration_descriptor[]
 egret _report_descriptor[]
 
 GP2040-CE\headers\gamepad\descriptors\NeogeoDescriptors.h
+neogeo_string_manufacturer[]
+neogeo_string_product[]
 neogeo_device_descriptor[]
 neogeo_configuration_descriptor[]
 neogeo_report_descriptor[]
 
 GP2040-CE\headers\gamepad\descriptors\PCEngineDescriptors.h
+pcengine_string_manufacturer[]
+pcengine_string_product[]
 pcengine_device_descriptor[]
 pcengine_configuration_descriptor[]
 pcengine_report_descriptor[]
 
-What you need to prepare:
-Egret II mini pad(For Egret II mini support)
+## Preparation
+You need following gamepads to find missing arrays, respectively.
+
 Megadrive mini 6 button pad(For Astrocity, Mega drive and Genesis mini support)
+Egret II mini pad(For Egret II mini support)
 Neogeo mini pad(For Neogeo mini support)
 PC Engine mini Turbopad(For PC Engine, CoreGrafx and TG-16 mini support)
-USB-C extension cable + logic analyzer(USB protocol) for Neogeo support.
 
-[IMAGE FOR PADS]
+![image](https://github.com/tamanegitaro/GP2040-CE-TT-Edition/assets/28869075/b6bda750-4f73-42eb-aacf-001699a5020b)
+![image](https://github.com/tamanegitaro/GP2040-CE-TT-Edition/assets/28869075/b0ef4bf9-a1ed-44a6-8580-0fa5d74d1916)
+![image](https://github.com/tamanegitaro/GP2040-CE-TT-Edition/assets/28869075/84ffa1a0-f134-4a99-a2f6-13b63f80ce3c)
+![image](https://github.com/tamanegitaro/GP2040-CE-TT-Edition/assets/28869075/3d184753-4c50-46d0-a2b7-a3e3ea2dd279)
 
-Here is how you get descriptors for each controllers.
+You also need USB-C extension cable + logic analyzer(USB protocol) for Neogeo mini support.
+
+## Dumping USB Descriptors
+Here is how you get descriptors for each controllers(For Astrocity/Mega Drive, EgretII and PC Engine. Neogeo is different.).
 
 (1) Install Wireshark with USB Cap
 (2) Run Wireshark with USB Cap and start recording USB packets
@@ -73,9 +88,19 @@ There is two GET DESCRIPTOR Response CONFIGURATION. Click on second one. Also cl
 This configuration descriptor include ENDPOINT DESCRIPTOR. Find byte which corresponds to bInterval byte. There are several ENDPOINT and bInterval in this descriptor. If these are not 0x01, change them to 0x01 for fastest response.
 ![image](https://github.com/tamanegitaro/GP2040-CE-TT-Edition/assets/28869075/12b90ee0-da40-426a-ad7d-afc9e30ab317)
 
+Click on "GET DESCRIPTOR Response HID Report" and "HID Report". The binary array is highlighted in blue. Use this array for xx_report_descriptor[] array.
+![image](https://github.com/tamanegitaro/GP2040-CE-TT-Edition/assets/28869075/a0428280-50de-497d-aa32-16ebb92def4b)
 
-[IMAGE FOR CONFIGURATION DESCRIPTOR2]
+For xx_string_manufacturer[] and xx_string_product[], open game controller configuration in windows settings. You can see gamepad's name.("6B controller" in this example image.). Use this string for both xx_string_manufacturer[] and xx_string_product[].
+![image](https://github.com/tamanegitaro/GP2040-CE-TT-Edition/assets/28869075/94952e56-8f3a-46d2-b251-69db97ec84af)
 
+
+For NEOGEO pad, it is little difficult because you will need logic analyzer.
+
+
+
+--------------------------------------------------------------
+--------------------------------------------------------------
 
 
 
