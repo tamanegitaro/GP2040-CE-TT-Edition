@@ -93,9 +93,8 @@ Click on "GET DESCRIPTOR Response HID Report" and "HID Report". The binary array
 ![image](https://github.com/tamanegitaro/GP2040-CE-TT-Edition/assets/28869075/a0428280-50de-497d-aa32-16ebb92def4b)
 (Descriptor shown in this figure is GP2040-CE Nintendo Switch descriptor.)
 
-For xx_string_manufacturer[] and xx_string_product[], open game controller configuration in windows settings. You can see gamepad's name.("6B controller" in this example image.). Use this string for both xx_string_manufacturer[] and xx_string_product[].
+For xx_string_manufacturer[] and xx_string_product[], open game controller configuration in windows settings. You can see gamepad's name.("6B controller" in this example figure.). Use this string for both xx_string_manufacturer[] and xx_string_product[].
 ![image](https://github.com/tamanegitaro/GP2040-CE-TT-Edition/assets/28869075/94952e56-8f3a-46d2-b251-69db97ec84af)
-(String shown in this figure is GP2040-CE Nintendo Switch descriptor.)
 
 ## Neogeo
 For Neogeo pad, it is little difficult because you will need logic analyzer. Connect logic analyzer between Neogeo pad and Neogeo mini.
@@ -105,12 +104,11 @@ Neogeo mini will apply reset on Neogeo pad and USB descriptor will change.
 
 You need to dump this second USB descriptor. Find descriptor which starts from 0x12 0x01. This is descriptor for neogeo_device_descriptor[].
 
-Find descriptor which starts from 0x09 0x02. This is configuration descryptor. There are several configuration descriptors. Find longer one and use it as neogeo_configuration_descriptor[].
+Find descriptor which starts from 0x09 0x02. This is configuration descryptor. There are two configuration descriptors. Find longer one and use it as neogeo_configuration_descriptor[].
 
-Next, find string descriptor which start from 0x06 0x03. Search in google for ASCII table and find which character is used for this string descriptor. For example, if value of descriptor is 0x06 0x03 0x42 0x00 0x42 0x00, string will be "BB". Use string you found for both xx_string_manufacturer[] and xx_string_product[]. This is important. Without this string, Neogeo mini will not recognize your fight stick as pad.
+Next, find string descriptor which start from 0x06 0x03. Search in google for ASCII table and find which character is used for this string descriptor. For example, if value of string descriptor is 0x06 0x03 0x42 0x00 0x42 0x00, string will be "BB". Use string you found for both xx_string_manufacturer[] and xx_string_product[]. Neogeo mini will not recognize your GP2040-CE as pad unless you use correct string.
 
 Next, find descriptor which start from 0x05 0x01. This descriptor might be divied into multiple transfers if the array was too long. Combine them and used this for neogeo_report_descriptor[].
-
 
 
 --------------------------------------------------------------
