@@ -8,21 +8,20 @@
   Multi-Platform Gamepad Firmware for RP2040 customized by tamanegi_taro
 </p>
 
-<p align="left">
-  This firmware is customized by tamanegi_taro. Added compatibility with following mini series:
-	* Astrocity mini
-	* Astrocity V mini
-	* Mega drive mini
-	* Mega drive 2 mini
-	* Genesis mini
-	* Genesis 2 mini
-	* Egret II mini
-  * Neogeo mini
-	* Neogeo international mini
-	* PC Engine mini
-  * Core Grafx mini
-	* TurboGrafx-16 mini	
-</p>
+## Compatibility
+This firmware is customized by tamanegi_taro. Added compatibility with following mini series:
+* Astrocity mini
+* Astrocity V mini
+* Mega drive mini
+* Mega drive 2 mini
+* Genesis mini
+* Genesis 2 mini
+* Egret II mini
+* Neogeo mini
+* Neogeo international mini
+* PC Engine mini
+* Core Grafx mini
+* TurboGrafx-16 mini	
 
 <p align="left">
   This project does not provide USB descriptor so you'll need to supply USB descriptor by yourselves. Don't worry. I will provide steps to achieve USB descriptors from your controller pads in moment.
