@@ -97,10 +97,10 @@ For xx_string_manufacturer[] and xx_string_product[], open game controller confi
 ## Dumping USB Descriptors(Neogeo mini pad)
 For Neogeo pad, it is little difficult because you will need logic analyzer. Connect logic analyzer between Neogeo pad and Neogeo mini.
 
-Neogeo mini will apply reset on Neogeo pad and USB descriptor will change.
+After communicating USB descriptor, Neogeo mini will apply reset on Neogeo pad and Neogeo Pad will send new USB descriptor after reset.
 ![image](https://github.com/tamanegitaro/GP2040-CE-TT-Edition/assets/28869075/2414566f-1dc3-400e-87a8-7f5b86af1b84)
 
-You need to dump this second USB descriptor. Find descriptor which starts from 0x12 0x01. Use it as neogeo_device_descriptor[].
+You need to dump this new USB descriptor. Should not use first USB descriptor. In new USB descriptor, find descriptor which starts from 0x12 0x01. Use it as neogeo_device_descriptor[].
 
 Find descriptor which starts from 0x09 0x02. This is configuration descryptor. There are two configuration descriptors. Find longer one and use it as neogeo_configuration_descriptor[].
 
