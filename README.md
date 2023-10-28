@@ -106,7 +106,7 @@ Find descriptor which starts from 0x09 0x02. This is configuration descryptor. T
 
 Next, find string descriptor which start from 0x06 0x03. Search in google for ASCII table and find which character is used for this string descriptor. For example, if value of string descriptor is 0x06 0x03 0x42 0x00 0x42 0x00, string will be "BB". Use string you found for both xx_string_manufacturer[] and xx_string_product[]. Neogeo mini will not recognize your GP2040-CE as pad unless you use correct string.
 
-Next, find descriptor which start from 0x05 0x01. This descriptor might be divied into multiple transfers if the array was too long. Combine them and used this for neogeo_report_descriptor[].
+Next, find descriptor which start from 0x05 0x01. This descriptor might be divided into multiple transfers if the arrays are too long. Combine them and used this for neogeo_report_descriptor[].
 
 
 --------------------------------------------------------------
