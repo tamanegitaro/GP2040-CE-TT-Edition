@@ -34,7 +34,7 @@ Hold these button while plugging USB to select input mode
 * L1 Egret II mini
 * R2 Keyboard
 * L2 Neogeo mini
-* R3 PC Engine mini
+* R3 PC Engine/Core Grafx/TurboGrafx-16 mini
 
 ## What need to prepare in this project
 In my project, following descriptors need to be modified by you for mini series compatibility:
@@ -115,11 +115,11 @@ After communicating USB descriptor, Neogeo mini will apply reset on Neogeo pad a
 
 You need to dump this new USB descriptor. Should not use first USB descriptor. In new USB descriptor, find descriptor which starts from 0x12 0x01. Use it as neogeo_device_descriptor[].
 
-Find descriptor which starts from 0x09 0x02. This is configuration descriptor. There are two configuration descriptors. Find longer one and use it as neogeo_configuration_descriptor[]. Make sure to set bInterval ad 0x01 for fastest response.
+Find descriptor which starts from 0x09 0x02. This is configuration descriptor. There are two configuration descriptors. Find longer one and use it as neogeo_configuration_descriptor[]. Make sure to set bInterval as 0x01 for fastest response.
 
 Next, find string descriptor which starts from 0x06 0x03. Search in google for ASCII table and find which character is used for this string descriptor. For example, if value of string descriptor is 0x06 0x03 0x42 0x00 0x42 0x00, string will be "BB". Use string you found for both xx_string_manufacturer[] and xx_string_product[]. Neogeo mini will not recognize your GP2040-CE as pad unless you use correct string.
 
-Next, find descriptor which start from 0x05 0x01. This descriptor might be divided into multiple transfers if the arrays are too long. Combine them and use this for neogeo_report_descriptor[].
+Next, find descriptor which start from 0x05 0x01. This descriptor might be divided into multiple transfers if the array is too long. Combine them and use this for neogeo_report_descriptor[].
 
 
 --------------------------------------------------------------
