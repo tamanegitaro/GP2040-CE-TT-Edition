@@ -5,7 +5,7 @@
   Multi-Platform Gamepad Firmware for RP2040 customized by tamanegi_taro
 </p>
 
-## Compatibility
+## Additional compatibility
 This firmware is customized by tamanegi_taro. Added compatibility with following mini series:
 * Astrocity mini
 * Astrocity V mini
@@ -35,6 +35,8 @@ Hold these button while plugging USB to select input mode
 * R2 Keyboard
 * L2 Neogeo mini
 * R3 PC Engine/Core Grafx/TurboGrafx-16 mini
+
+* Important! Make sure to select DPad : Digital
 
 ## What need to be prepared in this project
 In my project, following descriptors need to be modified by you for mini series compatibility:
