@@ -20,11 +20,11 @@ This firmware is customized by tamanegi_taro. Added compatibility with following
 * Core Grafx mini
 * TurboGrafx-16 mini	
 
-This project does not include USB descriptors for controllers of mini series so you'll need to supply USB descriptor by yourselves.
-Don't worry. I will provide steps to achieve USB descriptors from your controller pads below.
+This project does not include USB descriptors for controllers of mini series so you'll need to supply USB descriptors by yourself.
+Don't worry. I will provide steps to get USB descriptors from your controller pads below.
 
 ## Button to select input mode
-Hold these button while plugging USB to select input mode
+Hold following button while plugging USB to select input mode
 
 * P1 DirectInput
 * P2 PS4
